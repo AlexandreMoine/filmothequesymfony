@@ -1,0 +1,23 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+liste:
+    path: /liste
+    controller: App\Controller\FilmController::liste
+
+afficher:
+    path: /afficher/{id}
+    controller: App\Controller\FilmController::afficher
+
+supprimer:
+    path: /supprimer/{id}
+    controller: App\Controller\FilmController::supprimer
+
+filtrer:
+    path: /filtrer
+    controller: App\Controller\FilmController::filtrer
+
+ajouter:
+    path: /ajouter
+    controller: App\Controller\FilmController::formAjouter

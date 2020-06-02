@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <h1>Voici la liste des films</h1>
+        <br />
+
+        {% if message is defined %}
+            <div class="row">
+                <div class="col-sm-2" style="background-color:limegreen; color:white">
+                    {{ message }}
+                </div>
+            </div>
+        {% endif %}
+        <br />
+
+        <form method="post" action="./filtrer">
+            <label for="categories">Filtrer par la catégorie : </label>
+            <select name="categories" size="1">
+                {% for categorie in categories %}
+                    <option value="{{ categorie.getId() }}">{{ categorie.getLibelle() }}</option>
+                {% endfor %}
+                <option value="0">Tous</option>
+            </select>
+            <input type="submit" value="Filtrer" />
+        </form>
+
+        <br />
+        <a class="btn btn-success" href="../index.php/ajouter">Ajouter un film</a>
+        <br /><br />
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            {% for film in films %}
+                <tr>
+                    <td>{{ film.getId() }}</td>
+                    <td>{{ film.getTitre() }}</td>
+                    <td><a class="btn btn-success" href="../index.php/afficher/{{ film.getId() }}">Afficher</a> -
+                        <a class="btn btn-danger" href="../index.php/supprimer/{{ film.getId() }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="../index.php">Retour</a>
+    </div>
+
+    <!--
+    <ul>
+        {% for film in films %}
+            <li>{{ film.getTitre() }}</li>
+        {% else %}
+            <li>Aucun film</li>
+        {% endfor %}
+    </ul>
+    -->
+{% endblock %}

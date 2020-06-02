@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <div class="container">
+        <h2>Consultez le détail d'un film</h2>
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading">Titre : {{ film.getTitre() }}</div>
+            <div class="panel-body">Année de sortie : {{ film.getAnneeSortie() }}</div>
+            <div class="panel-body">Catégorie : {{ film.getCategorie().getLibelle() }}</div>
+            <div class="panel-footer">{{ film.getDescription() }}</div>
+        </div>
+        <a href="../liste">Retour</a>
+    </div>
+
+{% endblock %}
